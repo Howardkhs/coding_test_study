@@ -1,9 +1,10 @@
-class Tree{
-    public:
-        Tree(int N){
-            this->N = N;
-        }
-    
-    private:
-        int N;
-};
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    string str;
+    cin >> str;
+    cout << str;
+    cout << str[0];
+}
