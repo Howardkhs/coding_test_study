@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string": "cpp",
+        "random": "cpp",
+        "ostream": "cpp",
+        "deque": "cpp",
+        "vector": "cpp"
     }
 }
