@@ -3,8 +3,8 @@
 
 using namespace std;
 
-pair<int,int> seg[2000020];
-int arr[1000010];
+pair<int,int> seg[400020];
+int arr[100010];
 
 void create_seg(int idx,int l,int r)
 {
