@@ -1,6 +1,9 @@
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
+#include <queue>
+
+priority_queue<int, vector<int>, greater<int>>;
 
 using namespace std;
 
@@ -15,6 +18,10 @@ class Box{
         Box(int id, int w){
             this->id = id;
             this->w = w;
+        }
+    
+        void t(){
+            return;
         }
 
 };

@@ -1,72 +1,73 @@
+
 #include <iostream>
-#include <algorithm>
+#include <string.h>
+#include <cmath>
+#include <unordered_map>
+
 using namespace std;
+#define MAX_LEN  141
+unordered_map<int, int> pos;
 
-#define INF   2121212121
-#define MAX_N 50
-#define MAX_J 8
-
-int a[MAX_N];
-int b[MAX_N];
-int c[MAX_N];
-
-
-int main(){
-
-    int test_case;
-	int T, n, _a, _b, _c, tgt;
+int main(int argc, char** argv)
+{	
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	int test_case;
+	int T, s, e;
+    
 	
 	cin>>T;
+    int x_0, y_0, x_1, y_1, num, idx, x_dis, y_dis, cnt;
+    num = 1;
+    idx = 1;
+    while(1){
+        pos[idx] = num;
+        num += idx;
+        idx += 1;
+        if (num >= 10200)
+            break;        
+    }
+
 
 	for(test_case = 1; test_case <= T; ++test_case)
-	{   
-        int dp[MAX_N][MAX_J];
-        for (int i = 0; i < MAX_N; i++){
-            for (int j = 0; j < MAX_J; j++){
-                dp[i][j] = INF;
-            }
-        }
-        cin >> n;
+	{
+        cin >> s >> e;
 
-        
-
-        for (int i = 0; i < n; i++){
-            cin >> _a >> _b >> _c;
-            a[i] = _b + _c;
-            b[i] = _a + _c;
-            c[i] = _a + _b;
+     
+        if (s > e){
+            int temp = e;
+            e = s;
+            s = temp;
         }
 
-        if (n <= 2){
-            cout << "#" << test_case << " " << -1 << "\n";
-            continue;
-        }
-        
-        for (int i = 0; i < n; i++){
-            
-            if (i == 0){
-                dp[i][1] = a[i];
-                dp[i][2] = b[i];
-                dp[i][4] = c[i];
-                continue;
-            }
+        x_0 = ceil((-1 + sqrt(pow(1, 2) + 8 * s * 1)) / 2);
+        y_0 = s - pos[x_0] + 1;
 
-            for(int idx = 0; idx < 8; idx++){
-                if (dp[i-1][idx] == 0)
-                    continue;
-                tgt = idx | 1;
-                dp[i][tgt] = min(dp[i][tgt], dp[i-1][idx] + a[i]);
-                tgt = idx | 2;
-                dp[i][tgt] = min(dp[i][tgt], dp[i-1][idx] + b[i]);
-                tgt = idx | 4;
-                dp[i][tgt] = min(dp[i][tgt], dp[i-1][idx] + c[i]);                
-            }            
+ 
+        x_1 = ceil((-1 + sqrt(pow(1, 2) + 8 * e * 1)) / 2);
+        y_1 = e - pos[x_1] + 1;
+  
 
-        }
+        x_dis = x_1 - x_0;
+        y_dis = y_1 - y_0;
+        cnt = 0;
+        if (x_dis > 0 && y_dis > 0) {
+            int fast_cnt = min(x_dis, y_dis);
+            cnt += fast_cnt;
+            x_dis -= fast_cnt;
+            y_dis -= fast_cnt;
+        }       
+       
+        cout << "#" << test_case << " "<< cnt + abs(x_dis) + abs(y_dis) << "\n";
 
-        cout << "#" << test_case << " " << dp[n-1][7] << "\n";
+		/////////////////////////////////////////////////////////////////////////////////////////////
+		/*
+			 이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+		 */
+		/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	}
 	return 0;//정상종료시 반드시 0을 리턴해야합니다.
-
 }
