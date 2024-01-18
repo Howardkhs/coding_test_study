@@ -8,6 +8,15 @@
         "vector": "cpp",
         "unordered_map": "cpp",
         "cmath": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "*.tcc": "cpp",
+        "istream": "cpp",
+        "numeric": "cpp",
+        "sstream": "cpp",
+        "new": "cpp",
+        "numbers": "cpp",
+        "functional": "cpp",
+        "typeinfo": "cpp",
+        "array": "cpp"
     }
 }
